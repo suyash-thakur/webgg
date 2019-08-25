@@ -7,16 +7,21 @@ import { LoginComponent } from './login/login.component';
 import { MatToolbarModule, MatButtonModule,
   MatSidenavModule, MatIconModule, MatListModule, MatCardModule,
   MatTabsModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import { MatRadioModule } from '@angular/material/radio';
 import { HeaderComponent } from './header/header.component';
+import { StudentsComponent } from './student/students/students.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    StudentsComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     MatInputModule,

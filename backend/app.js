@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const studentRoutes = require('./routes/student');
 
 mongoose.connect(
   "mongodb://localhost:27017")
@@ -26,6 +27,6 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.json());
 
-app.use('/users', require('./routes/student'));
+app.use('/student', studentRoutes);
 
 module.exports = app;
