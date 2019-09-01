@@ -1,0 +1,34 @@
+<mat-card>
+<form [formGroup]="form" (submit)="onSaveStudent()">
+  <mat-form-field style="width: 50%">
+      <input matInput placeholder="Name" value='' formControlName="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field style="width: 50%">
+      <!-- <mat-label>Year</mat-label>
+      <select matNativeControl required>
+        <option value="second">Second</option>
+        <option value="third">Third</option>
+      </select> -->
+      <input matInput placeholder="Passing Year" value='' formControlName="year">
+
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 50%">
+        <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
+                     [removable]="removable" (removed)="remove(skill)">
+              {{ skill }}
+              <mat-icon matChipRemove *ngIf="removable"><img src="assets\close.svg" style="height: 15px;"></mat-icon>
+            </mat-chip>
+            <input placeholder="Skills"
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit">Save</button>
+</form>
+</mat-card>

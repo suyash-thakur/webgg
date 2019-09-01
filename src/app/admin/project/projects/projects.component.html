@@ -1,0 +1,167 @@
+
+<mat-tab-group>
+  <mat-tab label="3D Models">
+    <mat-card>
+      <div style="display: flex;">
+        <mat-form-field>
+        <input matInput placeholder="Search">
+      </mat-form-field>
+      <div style="flex-grow: 2"></div>
+      <button mat-button (click)="addNew()"> Add New</button>
+      </div>
+      <mat-accordion>
+          <mat-expansion-panel *ngFor='let project of projects | year: filterUser'>
+              <mat-expansion-panel-header>
+                <h3>{{ project.title }}</h3>
+              </mat-expansion-panel-header>
+                <div style="display: flex">
+                  <div>
+                    Discription-:
+                  </div>
+                  <div>
+                    {{ project.discription }}
+                  </div>
+                </div>
+                <br>
+                <div style="display: flex">
+                  <div style="margin-top: 5px;">
+                  contributors-:
+                </div>
+                  <mat-chip-list style="margin-left: 10px;">
+                      <mat-chip *ngFor='let contributor of project.contributers'>{{ contributor }}</mat-chip>
+                  </mat-chip-list>
+                </div>
+                <br>
+                <mat-action-row>
+                    <a mat-button  [href]='project.link' target="_blank">Project Link</a>
+                    <a mat-button color="primary" [routerLink]="['/projectEdit', project.id]">EDIT</a>
+                    <a mat-button color="warn" (click)='onDelete(project.id)'>DELETE</a>
+                </mat-action-row>
+            </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Games">
+    <mat-card>
+      <div style="display: flex;">
+        <mat-form-field>
+        <input matInput placeholder="Search">
+      </mat-form-field>
+      <div style="flex-grow: 2"></div>
+      <button mat-button (click)="addNew()"> Add New</button>
+      </div>
+      <mat-accordion>
+          <mat-expansion-panel *ngFor='let project of projects | year: filterUser3'>
+              <mat-expansion-panel-header>
+                <h3>{{ project.title }}</h3>
+              </mat-expansion-panel-header>
+                <div style="display: flex">
+                  <div>
+                    Discription-:
+                  </div>
+                  <div>
+                    {{ project.discription }}
+                  </div>
+                </div>
+                <br>
+                <div style="display: flex">
+                  <div style="margin-top: 5px;">
+                  contributors-:
+                </div>
+                  <mat-chip-list style="margin-left: 10px;">
+                      <mat-chip *ngFor='let contributor of project.contributers'>{{ contributor }}</mat-chip>
+                  </mat-chip-list>
+                </div>
+                <br>
+                <mat-action-row>
+                    <a mat-button  [href]='project.link' target="_blank">Project Link</a>
+                    <a mat-button color="primary" [routerLink]="['/projectEdit', project.id]">EDIT</a>
+                    <a mat-button color="warn" (click)='onDelete(project.id)'>DELETE</a>
+                </mat-action-row>
+            </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="UI Design">
+    <mat-card>
+      <div style="display: flex;">
+        <mat-form-field>
+        <input matInput placeholder="Search">
+      </mat-form-field>
+      <div style="flex-grow: 2"></div>
+      <button mat-button (click)="addNew()"> Add New</button>
+      </div>
+      <mat-accordion>
+          <mat-expansion-panel *ngFor='let project of projects | year: filterUser4'>
+              <mat-expansion-panel-header>
+                <h3>{{ project.title }}</h3>
+              </mat-expansion-panel-header>
+                <div style="display: flex">
+                  <div>
+                    Discription-:
+                  </div>
+                  <div>
+                    {{ project.discription }}
+                  </div>
+                </div>
+                <br>
+                <div style="display: flex">
+                  <div style="margin-top: 5px;">
+                  contributors-:
+                </div>
+                  <mat-chip-list style="margin-left: 10px;">
+                      <mat-chip *ngFor='let contributor of project.contributers'>{{ contributor }}</mat-chip>
+                  </mat-chip-list>
+                </div>
+                <br>
+                <mat-action-row>
+                    <a mat-button  [href]='project.link' target="_blank">Project Link</a>
+                    <a mat-button color="primary" [routerLink]="['/projectEdit', project.id]">EDIT</a>
+                    <a mat-button color="warn" (click)='onDelete(project.id)'>DELETE</a>
+                </mat-action-row>
+            </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+</mat-tab><mat-tab label="AR/VR">
+  <mat-card>
+    <div style="display: flex;">
+      <mat-form-field>
+      <input matInput placeholder="Search">
+    </mat-form-field>
+    <div style="flex-grow: 2"></div>
+    <button mat-button (click)="addNew()"> Add New</button>
+    </div>
+    <mat-accordion>
+        <mat-expansion-panel *ngFor='let project of projects | year: filterUser2'>
+            <mat-expansion-panel-header>
+              <h3>{{ project.title }}</h3>
+            </mat-expansion-panel-header>
+              <div style="display: flex">
+                <div>
+                  Discription-:
+                </div>
+                <div>
+                  {{ project.discription }}
+                </div>
+              </div>
+              <br>
+              <div style="display: flex">
+                <div style="margin-top: 5px;">
+                contributors-:
+              </div>
+                <mat-chip-list style="margin-left: 10px;">
+                    <mat-chip *ngFor='let contributor of project.contributers'>{{ contributor }}</mat-chip>
+                </mat-chip-list>
+              </div>
+              <br>
+              <mat-action-row>
+                  <a mat-button  [href]='project.link' target="_blank">Project Link</a>
+                  <a mat-button color="primary" [routerLink]="['/projectEdit', project.id]">EDIT</a>
+                  <a mat-button color="warn" (click)='onDelete(project.id)'>DELETE</a>
+              </mat-action-row>
+          </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+</mat-tab>
+</mat-tab-group>
+

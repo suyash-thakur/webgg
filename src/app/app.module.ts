@@ -1,24 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './admin/login/login.component';
 import { MatToolbarModule, MatButtonModule,
   MatSidenavModule, MatIconModule, MatListModule, MatCardModule,
-  MatTabsModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
+  MatTabsModule, MatInputModule, MatProgressSpinnerModule,  MatExpansionModule, MatChipsModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import { HttpClientModule } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
-import { HeaderComponent } from './header/header.component';
-import { StudentsComponent } from './student/students/students.component';
+import { HeaderComponent } from './admin/header/header.component';
+import { StudentsComponent } from './admin/student/students/students.component';
+import { StudentEditComponent } from './admin/student/student-edit/student-edit.component';
+import { AdminComponent } from './admin/admin.component';
+import { YearPipe } from './pipes/year.pipe';
+import { ProjectsComponent } from './admin/project/projects/projects.component';
+import { ProjectEditComponent } from './admin/project/project-edit/project-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    StudentsComponent
+    StudentsComponent,
+    StudentEditComponent,
+    AdminComponent,
+    YearPipe,
+    ProjectsComponent,
+    ProjectEditComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -34,7 +44,13 @@ import { StudentsComponent } from './student/students/students.component';
     MatCardModule,
     MatTabsModule,
     MatRadioModule,
+    MatExpansionModule,
+    MatChipsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
+  exports: [MatExpansionModule],
   providers: [],
   bootstrap: [AppComponent]
 })

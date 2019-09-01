@@ -1,0 +1,36 @@
+<mat-card>
+  <form [formGroup]="form" (submit)="onSaveProject()">
+    <mat-form-field style="width: 50%">
+        <input matInput placeholder="Title" value='' formControlName="title">
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 50%">
+        <textarea rows='5' matInput placeholder="Discription" value='' formControlName="discription"></textarea>
+      </mat-form-field>
+      <br>
+      <mat-form-field style="width: 50%">
+        <input matInput placeholder="Type" value='' formControlName="type">
+    </mat-form-field>
+    <br>
+      <mat-form-field style="width: 50%">
+          <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip *ngFor="let contributer of contributers" [selectable]="selectable"
+                       [removable]="removable" (removed)="remove(contributer)">
+                {{ contributer }}
+                <mat-icon matChipRemove *ngIf="removable"><img src="assets\close.svg" style="height: 15px;"></mat-icon>
+              </mat-chip>
+              <input placeholder="Contributers"
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+      </mat-form-field>
+      <br>
+      <mat-form-field style="width: 50%">
+        <input matInput placeholder="Link" value='' formControlName="link">
+    </mat-form-field>
+    <br>
+      <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+</mat-card>
