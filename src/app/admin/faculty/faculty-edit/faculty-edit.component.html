@@ -1,0 +1,13 @@
+<mat-card>
+  <form [formGroup]="form" (submit)="onSaveFaculty()">
+    <mat-form-field style="width: 50%">
+        <input matInput placeholder="Name" value='' formControlName="name">
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 50%">
+      <input matInput placeholder="Designation" value='' formControlName="designation">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+</mat-card>

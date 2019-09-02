@@ -60,7 +60,7 @@ router.put("/:id", (req, res, next) => {
     _id: req.body.id,
     title: req.body.title,
     discription: req.body.discription,
-    contributors: req.body.contributors,
+    contributers: req.body.contributers,
     type: req.body.type,
     link: req.body.link
   });

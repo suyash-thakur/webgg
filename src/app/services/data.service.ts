@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { StorageService } from './storage.service';
 import { Projects } from '../models/projects';
+import { Faculty } from '../models/faculty';
 
 
 @Injectable({
@@ -17,6 +18,10 @@ export class DataService {
 
   private projects: Projects[] = [];
   private projectsUpdated = new Subject<Projects[]>();
+
+  private faculty: Faculty[] = [];
+  private facultyUpdated = new Subject<Faculty[]>();
+
 
   constructor(private http: HttpClient, private router: Router, private storage: StorageService) { }
 
@@ -139,6 +144,7 @@ updateProject(id: string, title: string, discription: string, contributers: stri
     type: type,
     link: link
   };
+  console.log(projectData);
   this.http.put('http://localhost:3000/projects/' + id, projectData).subscribe(response => {
     console.log(response);
     this.router.navigate(['/']);
@@ -149,4 +155,64 @@ deleteProject(projectId: string) {
   return this.http
     .delete('http://localhost:3000/projects/' + projectId);
 }
+
+getFaculties() {
+  this.http
+    .get<{ message: string; faculty: any }>(
+      'http://localhost:3000/faculty'
+    )
+    .pipe(map((facultyData) => {
+      console.log(facultyData.faculty);
+      return facultyData.faculty.map(faculty => {
+        return {
+          name: faculty.name,
+          designation: faculty.designation,
+          id: faculty._id
+        };
+      });
+    }))
+    .subscribe(transformedFaculty => {
+      this.faculty = transformedFaculty;
+      this.facultyUpdated.next([...this.faculty]);
+    });
+}
+getFacultyUpdateListener() {
+  return this.facultyUpdated.asObservable();
+}
+
+getFaculty(id: string) {
+  return this.http.get<{
+    _id: string;
+    name: string;
+    designation: string;
+  }>('http://localhost:3000/faculty/' + id);
+}
+
+addFaculty(name: string, designation: string) {
+  const facultyData = {name, designation,};
+  console.log(facultyData);
+  this.http.post<{ message: string; faculty: Faculty}>('http://localhost:3000/faculty/add', facultyData).subscribe(response => {
+    console.log(response);
+    this.router.navigate(['/']);
+  });
+}
+
+updateFaculty(id: string, name: string, designation: string) {
+  const facultyData: Faculty = {
+    id: id,
+    name: name,
+    designation: designation
+  };
+  this.http.put('http://localhost:3000/faculty/' + id, facultyData).subscribe(response => {
+    console.log(response);
+    this.router.navigate(['/']);
+  });
+}
+
+deleteFaculty(facultyId: string) {
+  return this.http
+    .delete('http://localhost:3000/faculty/' + facultyId);
+}
+
+
 }

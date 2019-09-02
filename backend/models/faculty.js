@@ -5,4 +5,4 @@ const facultySchema = mongoose.Schema({
   designation: {type: String, require: true}
 });
 
-module.exports = mongoose.Schema('faculty', facultySchema);
+module.exports = mongoose.model('faculty', facultySchema);

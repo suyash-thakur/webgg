@@ -1,0 +1,29 @@
+<mat-card>
+  <div style="display: flex;">
+    <mat-form-field>
+    <input matInput placeholder="Search">
+  </mat-form-field>
+  <div style="flex-grow: 2"></div>
+  <button mat-button	(click)="addnew()"> Add New</button>
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor= "let faculty of faculties ">
+      <mat-expansion-panel-header>
+        <h3>{{ faculty.name }}</h3>
+      </mat-expansion-panel-header>
+        <div style="display: flex">
+          <div style="margin-top: 5px;">
+          designation -:
+        </div>
+        &nbsp;
+        <div>
+          {{ faculty.designation }}
+        </div>
+        </div>
+        <mat-action-row>
+            <a mat-button color="primary" [routerLink]="['/facultyEdit', faculty.id]" >EDIT</a>
+            <a mat-button color="warn" (click)='onDelete(faculty.id)'>DELETE</a>
+        </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

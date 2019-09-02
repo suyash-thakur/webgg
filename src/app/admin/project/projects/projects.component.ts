@@ -13,7 +13,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   projects: Projects[];
   private projectSub: Subscription;
-
+  contributer: string[] = [ ];
   constructor(private router: Router, public dataService: DataService) { }
   filterUser( project: Projects) {
     if ( project.type === '3D Model') {

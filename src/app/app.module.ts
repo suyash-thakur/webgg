@@ -17,6 +17,10 @@ import { AdminComponent } from './admin/admin.component';
 import { YearPipe } from './pipes/year.pipe';
 import { ProjectsComponent } from './admin/project/projects/projects.component';
 import { ProjectEditComponent } from './admin/project/project-edit/project-edit.component';
+import { AlumniComponent } from './admin/alumni/alumni/alumni.component';
+import { AlumniEditComponent } from './admin/alumni/alumni-edit/alumni-edit.component';
+import { FacultyComponent } from './admin/faculty/faculty/faculty.component';
+import { FacultyEditComponent } from './admin/faculty/faculty-edit/faculty-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { ProjectEditComponent } from './admin/project/project-edit/project-edit.
     AdminComponent,
     YearPipe,
     ProjectsComponent,
-    ProjectEditComponent
+    ProjectEditComponent,
+    AlumniComponent,
+    AlumniEditComponent,
+    FacultyComponent,
+    FacultyEditComponent
   ],
   imports: [
     BrowserAnimationsModule,

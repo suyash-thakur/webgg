@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const app = express();
 const studentRoutes = require('./routes/student');
 const projectRoutes = require('./routes/projects');
+const facultyRoutes = require('./routes/faculty');
+
 
 
 mongoose.connect(
@@ -33,6 +35,7 @@ app.use((req, res, next) => {
 
 app.use('/student', studentRoutes);
 app.use('/projects', projectRoutes);
+app.use('/faculty', facultyRoutes);
 
 
 module.exports = app;
